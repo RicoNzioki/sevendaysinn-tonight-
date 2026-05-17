@@ -6,6 +6,30 @@
 <meta name="theme-color" content="#FFC72C">
 <title>7 Days Holiday Inn — Langata, Nairobi</title>
 <meta name="description" content="Budget accommodation in the heart of Langata, Nairobi. Rooms from KSh 3,500. 10% off tonight when you book via WhatsApp.">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZRLEP89F6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // Capture the bar source from URL (e.g. ?bar=quincy)
+  const urlParams = new URLSearchParams(window.location.search);
+  const barSource = urlParams.get('bar') || 'direct';
+
+  gtag('config', 'G-LZRLEP89F6', {
+    'custom_map': {'dimension1': 'bar_source'},
+    'bar_source': barSource
+  });
+
+  // Fire a pageview event tagged with the bar source
+  gtag('event', 'qr_scan', {
+    'bar_source': barSource,
+    'event_category': 'engagement'
+  });
+</script>
+<!-- End Google Analytics -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -303,6 +327,42 @@
     if (scrolled && !showing) { sticky.classList.add('show'); showing = true; }
     else if (!scrolled && showing) { sticky.classList.remove('show'); showing = false; }
   }, { passive: true });
+
+  // Track clicks on CTA buttons
+  document.querySelectorAll('.btn-whatsapp').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'whatsapp_click', {
+          'event_category': 'conversion',
+          'event_label': i === 0 ? 'main_cta' : 'sticky_cta',
+          'bar_source': barSource
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll('.btn-book').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'book_online_click', {
+          'event_category': 'conversion',
+          'event_label': 'book_now_button',
+          'bar_source': barSource
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll('.map-link').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'directions_click', {
+          'event_category': 'engagement',
+          'bar_source': barSource
+        });
+      }
+    });
+  });
 </script>
 
 </body>
