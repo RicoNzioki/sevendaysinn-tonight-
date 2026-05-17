@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <meta name="theme-color" content="#FFC72C">
 <title>7 Days Holiday Inn — Langata, Nairobi</title>
-<meta name="description" content="Budget accommodation in the heart of Langata, Nairobi. Rooms from KSh 3,500. 10% off tonight when you book via WhatsApp.">
+<meta name="description" content="Budget accommodation in Langata, Nairobi. Tonight only: KSh 3,500 → KSh 3,150 (10% off). Book via WhatsApp.">
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZRLEP89F6"></script>
@@ -111,14 +111,33 @@
 
   /* Price strip */
   .price-strip {
-    background: var(--paper); padding: 22px;
-    display: flex; align-items: baseline; justify-content: space-between;
+    background: var(--paper); padding: 20px 22px;
     border-bottom: 1px dashed rgba(14,14,16,0.2);
   }
-  .price-strip .from { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(14,14,16,0.55); font-weight: 700; }
-  .price-strip .amount { font-family: 'Archivo Black', sans-serif; font-size: 36px; color: var(--ink); }
-  .price-strip .amount .ksh { font-size: 14px; vertical-align: top; margin-right: 4px; opacity: 0.6; }
-  .price-strip .unit { font-size: 13px; color: rgba(14,14,16,0.6); font-weight: 600; }
+  .price-strip .from { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(14,14,16,0.55); font-weight: 700; margin-bottom: 8px; }
+  .price-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .price-old {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    color: rgba(14,14,16,0.4);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--red);
+  }
+  .price-old .ksh { font-size: 11px; vertical-align: top; margin-right: 2px; }
+  .price-new {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 36px; color: var(--ink); line-height: 1;
+  }
+  .price-new .ksh { font-size: 14px; vertical-align: top; margin-right: 4px; opacity: 0.6; }
+  .price-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+  .price-unit { font-size: 13px; color: rgba(14,14,16,0.6); font-weight: 600; }
+  .save-badge {
+    background: var(--red); color: #fff;
+    padding: 5px 10px; border-radius: 6px;
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
 
   /* CTAs */
   .cta-stack { padding: 22px; display: flex; flex-direction: column; gap: 12px; }
@@ -262,11 +281,15 @@
 </div>
 
 <div class="price-strip">
-  <div>
-    <div class="from">Rooms from</div>
-    <div class="amount"><span class="ksh">KSh</span>3,500</div>
+  <div class="from">Rooms from tonight</div>
+  <div class="price-row">
+    <div class="price-old"><span class="ksh">KSh</span>3,500</div>
+    <div class="price-new"><span class="ksh">KSh</span>3,150</div>
   </div>
-  <div class="unit">per night</div>
+  <div class="price-meta">
+    <div class="price-unit">per night</div>
+    <div class="save-badge">You save KSh 350</div>
+  </div>
 </div>
 
 <div class="cta-stack">
